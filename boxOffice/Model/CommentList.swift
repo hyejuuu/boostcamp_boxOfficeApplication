@@ -8,6 +8,7 @@
 
 import Foundation
 
+// 한줄평 목록
 struct CommentList: Codable {
     let comments: [Comment]
 }

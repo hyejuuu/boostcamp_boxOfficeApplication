@@ -40,7 +40,7 @@ class CollectionViewController: UICollectionViewController {
         indicator.startAnimating()
         UIApplication.shared.isNetworkActivityIndicatorVisible = true
         
-        requestMovieList(type: 0, completion: { (data, err) in
+        requestData(urlString: "http://connect-boxoffice.run.goorm.io/movies?order_type=0") { (data: MovieList?, err: Error?) in
             if let error = err {
                 DispatchQueue.main.async {
                     self.showErrorAlert(error: error.localizedDescription)
@@ -63,7 +63,7 @@ class CollectionViewController: UICollectionViewController {
                 self.indicator.stopAnimating()
                 UIApplication.shared.isNetworkActivityIndicatorVisible = false
             }
-        })
+        }
     }
     
     func setCollectionView() {
@@ -91,7 +91,7 @@ class CollectionViewController: UICollectionViewController {
             return
         }
         
-        requestMovieList(type: type, completion: { (data, err) in
+        requestData(urlString: "http://connect-boxoffice.run.goorm.io/movies?order_type=\(type)") { (data: MovieList?, err: Error?) in
             if let error = err {
                 DispatchQueue.main.async {
                     self.showErrorAlert(error: error.localizedDescription)
@@ -109,13 +109,15 @@ class CollectionViewController: UICollectionViewController {
             
             self.movieList = data
             
-            OperationQueue.main.addOperation {
+            DispatchQueue.main.async {
                 self.collectionView.reloadData()
                 sender.endRefreshing()
                 UIApplication.shared.isNetworkActivityIndicatorVisible = false
             }
-        })
+        }
     }
+    
+    //MARK:- DataSource
 
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return movieList?.movies.count ?? 0
@@ -129,6 +131,8 @@ class CollectionViewController: UICollectionViewController {
         cell.movie = self.movieList?.movies[indexPath.item]
         return cell
     }
+    
+    //MARK:- Delegate
     
     override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let nextController = MovieContentsTableViewController.init(style: .grouped)
@@ -144,7 +148,7 @@ extension CollectionViewController: MovieSortingDelegate {
         indicator.startAnimating()
         UIApplication.shared.isNetworkActivityIndicatorVisible = true
         
-        requestMovieList(type: type, completion: { (data, err) in
+        requestData(urlString: "http://connect-boxoffice.run.goorm.io/movies?order_type=\(type)") { (data: MovieList?, err: Error?) in
             if let error = err {
                 DispatchQueue.main.async {
                     self.showErrorAlert(error: error.localizedDescription)
@@ -162,12 +166,12 @@ extension CollectionViewController: MovieSortingDelegate {
             
             self.movieList = data
             
-            OperationQueue.main.addOperation {
+            DispatchQueue.main.async {
                 self.collectionView.reloadData()
                 self.indicator.stopAnimating()
                 UIApplication.shared.isNetworkActivityIndicatorVisible = false
             }
-        })
+        }
     }
 }
 

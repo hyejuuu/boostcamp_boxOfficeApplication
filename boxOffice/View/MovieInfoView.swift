@@ -7,6 +7,7 @@
 //
 import UIKit
 
+// 해당 영화정보를 보여주는 화면에서 headerView로 쓰일 View
 class MovieInfoView: UIView {
     
     private let xibName = "MovieInfoView"

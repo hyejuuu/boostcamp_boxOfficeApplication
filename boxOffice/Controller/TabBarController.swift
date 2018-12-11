@@ -17,6 +17,7 @@ class TabBarController: UITabBarController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setLayout()
+        setTabBar()
     }
     
     func setLayout() {
@@ -28,8 +29,9 @@ class TabBarController: UITabBarController {
         
         self.navigationItem.rightBarButtonItem = sortButton
         self.navigationItem.rightBarButtonItem?.tintColor = .white
-        
-        
+    }
+    
+    func setTabBar() {
         let tableViewController = TableViewController()
         tableViewController.tabBarItem.image = #imageLiteral(resourceName: "ic_list")
         tableViewController.tabBarItem.title = "Table"
@@ -43,10 +45,11 @@ class TabBarController: UITabBarController {
         collectionViewController.tabBarItem.image = #imageLiteral(resourceName: "ic_collection")
         collectionViewController.tabBarItem.title = "Collection"
         self.movieCollectionViewDelegate = collectionViewController
-
+        
         self.viewControllers = [tableViewController, collectionViewController]
     }
 
+    // 정렬버튼을 눌렀을 때 호출되는 메소드
     @objc func touchUpSortButton(_ sender: UIBarButtonItem) {
         let alertController = UIAlertController(title: "정렬방식 선택", message: "영화를 어떤 순서로 정렬할까요?", preferredStyle: .actionSheet)
         
@@ -75,6 +78,7 @@ class TabBarController: UITabBarController {
         alertController.addAction(releaseAction)
         alertController.addAction(cancelAction)
         
+        // 아이패드에서는 popoverController로 띄워준다.
         if let popoverController = alertController.popoverPresentationController {
             popoverController.barButtonItem = sender 
         }

@@ -8,6 +8,7 @@
 
 import UIKit
 
+// 영화 목록을 보여줄 collectionView에서 사용될 cell
 class MovieCollectionViewCell: UICollectionViewCell {
 
     @IBOutlet weak var movieImageView: UIImageView!

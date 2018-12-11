@@ -16,9 +16,3 @@ extension Formatter {
         return formatter
     }()
 }
-
-extension BinaryInteger {
-    var formattedWithSeparator: String {
-        return Formatter.withSeparator.string(for: self) ?? ""
-    }
-}

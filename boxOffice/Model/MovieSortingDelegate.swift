@@ -8,6 +8,7 @@
 
 import Foundation
 
+// tableView와 collectionView에서 정렬방법이 바뀌었을 때 알려주기 위한 delegate
 protocol MovieSortingDelegate: class {
     func didChangeMovieData(type: Int)
 }

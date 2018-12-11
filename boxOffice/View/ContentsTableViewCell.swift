@@ -8,6 +8,7 @@
 
 import UIKit
 
+// 줄거리를 보여줄 cell
 class ContentsTableViewCell: UITableViewCell {
     let titleLabel: UILabel = {
         let label = UILabel()

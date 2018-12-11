@@ -41,7 +41,7 @@ class MovieContentsTableViewController: UITableViewController {
             return
         }
         
-        requestMovieData(id: id) { (data, error) in
+        requestData(urlString: "http://connect-boxoffice.run.goorm.io/movie?id=\(id)") { (data: MovieData?, error: Error?) in
             if let error = error {
                 DispatchQueue.main.async {
                     self.showErrorAlert(error: error.localizedDescription)
@@ -65,7 +65,7 @@ class MovieContentsTableViewController: UITableViewController {
             }
         }
         
-        requestCommentList(id: id) { (data, error) in
+        requestData(urlString: "http://connect-boxoffice.run.goorm.io/comments?movie_id=\(id)") { (data: CommentList?, error: Error?) in
             if let error = error {
                 DispatchQueue.main.async {
                     self.showErrorAlert(error: error.localizedDescription)
@@ -146,6 +146,8 @@ class MovieContentsTableViewController: UITableViewController {
         self.present(alertController, animated: true, completion: nil)
     }
     
+    //MARK:- DataSource
+    
     override func numberOfSections(in tableView: UITableView) -> Int {
         return 3
     }
@@ -189,6 +191,8 @@ class MovieContentsTableViewController: UITableViewController {
             return UITableViewCell()
         }
     }
+    
+    //MARK:- Delegate
     
     override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         switch section {

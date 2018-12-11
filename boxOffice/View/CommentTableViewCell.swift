@@ -8,6 +8,7 @@
 
 import UIKit
 
+// 한줄평을 보여줄 cell
 class CommentTableViewCell: UITableViewCell {
     @IBOutlet weak var userImageView: UIImageView!
     @IBOutlet weak var writerLabel: UILabel!

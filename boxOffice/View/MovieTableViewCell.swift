@@ -8,6 +8,7 @@
 
 import UIKit
 
+// 영화 목록을 보여줄 TableView에서 사용될 cell
 class MovieTableViewCell: UITableViewCell {
     
     @IBOutlet weak var movieImageView: UIImageView!

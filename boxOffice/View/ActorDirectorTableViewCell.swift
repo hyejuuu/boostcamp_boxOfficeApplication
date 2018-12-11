@@ -8,6 +8,7 @@
 
 import UIKit
 
+// 감독/출연을 보여줄 cell
 class ActorDirectorTableViewCell: UITableViewCell {
     let titleLabel: UILabel = {
         let label = UILabel()

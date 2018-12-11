@@ -6,7 +6,7 @@
 //  Copyright © 2018 leehyeju. All rights reserved.
 //
 
-// 한 영화의 데이터
+// 영화의 데이터
 import UIKit
 
 struct MovieData: Codable {
