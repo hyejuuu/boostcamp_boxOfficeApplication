@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_0" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <collectionViewCell opaque="NO" multipleTouchEnabled="YES" contentMode="scaleToFill" reuseIdentifier="" id="gTV-IL-0wX" customClass="MovieCollectionViewCell" customModule="boxOffice" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="190" height="331"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                <rect key="frame" x="0.0" y="0.0" width="190" height="331"/>
+                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                <subviews>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="img_placeholder" translatesAutoresizingMaskIntoConstraints="NO" id="k9f-Kn-ccA" userLabel="Movie Image View">
+                        <rect key="frame" x="25" y="10" width="140" height="220"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="140" id="5n2-fW-RPD"/>
+                            <constraint firstAttribute="height" constant="220" id="BFJ-mK-agW"/>
+                        </constraints>
+                    </imageView>
+                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="LPL-Zw-OsV">
+                        <rect key="frame" x="15" y="240" width="160" height="72.5"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="TOH-Zk-Vnh" userLabel="Movie Name Label">
+                                <rect key="frame" x="0.0" y="0.0" width="160" height="26.5"/>
+                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="22"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="ZHd-6w-7IK" userLabel="Rating Label">
+                                <rect key="frame" x="0.0" y="31.5" width="160" height="18"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="KJ6-VI-SRM" userLabel="Release Label">
+                                <rect key="frame" x="0.0" y="54.5" width="160" height="18"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="160" id="DJU-W0-4Kq"/>
+                        </constraints>
+                    </stackView>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="r8z-9e-iyo" userLabel="Grade Image View">
+                        <rect key="frame" x="135" y="15" width="25" height="25"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="25" id="8ae-as-ta6"/>
+                            <constraint firstAttribute="height" constant="25" id="uPV-fK-iU4"/>
+                        </constraints>
+                    </imageView>
+                </subviews>
+            </view>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+            <constraints>
+                <constraint firstItem="LPL-Zw-OsV" firstAttribute="centerX" secondItem="gTV-IL-0wX" secondAttribute="centerX" id="0oP-8z-hAh"/>
+                <constraint firstItem="r8z-9e-iyo" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" constant="15" id="7a3-Kd-FAO"/>
+                <constraint firstItem="k9f-Kn-ccA" firstAttribute="trailing" secondItem="r8z-9e-iyo" secondAttribute="trailing" constant="5" id="GjY-N6-vos"/>
+                <constraint firstItem="k9f-Kn-ccA" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" constant="10" id="KgI-0p-Bmt"/>
+                <constraint firstItem="LPL-Zw-OsV" firstAttribute="top" secondItem="k9f-Kn-ccA" secondAttribute="bottom" constant="10" id="O5O-Bi-wIl"/>
+                <constraint firstItem="k9f-Kn-ccA" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="10" id="RTT-7v-A66"/>
+                <constraint firstItem="r8z-9e-iyo" firstAttribute="top" secondItem="k9f-Kn-ccA" secondAttribute="top" constant="5" id="Z2w-jm-p4B"/>
+                <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="k9f-Kn-ccA" secondAttribute="trailing" constant="10" id="u6d-vs-1iI"/>
+                <constraint firstItem="k9f-Kn-ccA" firstAttribute="centerX" secondItem="gTV-IL-0wX" secondAttribute="centerX" id="uaQ-hs-mYR"/>
+            </constraints>
+            <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
+            <size key="customSize" width="191" height="331"/>
+            <connections>
+                <outlet property="gradeImageView" destination="r8z-9e-iyo" id="dbt-Ts-GRb"/>
+                <outlet property="movieImageView" destination="k9f-Kn-ccA" id="Xsk-LN-eQu"/>
+                <outlet property="movieNameLabel" destination="TOH-Zk-Vnh" id="tk5-NL-daJ"/>
+                <outlet property="ratingLabel" destination="ZHd-6w-7IK" id="u3P-j5-hxI"/>
+                <outlet property="releaseLabel" destination="KJ6-VI-SRM" id="DpE-hL-jEQ"/>
+            </connections>
+            <point key="canvasLocation" x="-254.0625" y="101.93661971830986"/>
+        </collectionViewCell>
+    </objects>
+    <resources>
+        <image name="img_placeholder" width="100" height="140"/>
+    </resources>
+</document>

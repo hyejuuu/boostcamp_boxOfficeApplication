@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="163" id="KGk-i7-Jjw" customClass="MovieTableViewCell" customModule="boxOffice" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="459" height="163"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="459" height="162.5"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="img_placeholder" translatesAutoresizingMaskIntoConstraints="NO" id="UbW-su-Qk2">
+                        <rect key="frame" x="15" y="16.5" width="100" height="130"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="100" id="Xe1-zc-Dgz"/>
+                            <constraint firstAttribute="height" constant="130" id="og9-rB-q57"/>
+                        </constraints>
+                    </imageView>
+                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="6Np-o3-WaT">
+                        <rect key="frame" x="130" y="36" width="309" height="91"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="xPZ-1j-vOq">
+                                <rect key="frame" x="0.0" y="0.0" width="309" height="25"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="IXW-HU-Nwt" userLabel="MovieName">
+                                        <rect key="frame" x="0.0" y="0.0" width="57.5" height="25"/>
+                                        <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="23"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="kSp-YG-BRs" userLabel="Grade Image View">
+                                        <rect key="frame" x="67.5" y="0.0" width="25" height="25"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="25" id="BJV-LB-JkR"/>
+                                            <constraint firstAttribute="height" constant="25" id="l3I-LS-7x9"/>
+                                        </constraints>
+                                    </imageView>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="BHH-Jw-9Yo">
+                                        <rect key="frame" x="102.5" y="0.0" width="206.5" height="25"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" relation="greaterThanOrEqual" id="0fd-Re-obV"/>
+                                        </constraints>
+                                    </view>
+                                </subviews>
+                            </stackView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="aog-JW-J8L" userLabel="Rating Label">
+                                <rect key="frame" x="0.0" y="33" width="309" height="25"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="wfq-Ri-wSR" userLabel="Release Label">
+                                <rect key="frame" x="0.0" y="66" width="309" height="25"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                    </stackView>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="6Np-o3-WaT" firstAttribute="leading" secondItem="UbW-su-Qk2" secondAttribute="trailing" constant="15" id="CEB-aP-8cX"/>
+                    <constraint firstItem="UbW-su-Qk2" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="WOw-Hr-ZHc"/>
+                    <constraint firstAttribute="trailingMargin" secondItem="6Np-o3-WaT" secondAttribute="trailing" id="cOb-S9-L7V"/>
+                    <constraint firstItem="UbW-su-Qk2" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="15" id="fU5-pQ-HRW"/>
+                    <constraint firstItem="6Np-o3-WaT" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="mXd-ao-QpF"/>
+                </constraints>
+            </tableViewCellContentView>
+            <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
+            <connections>
+                <outlet property="gradeImageView" destination="kSp-YG-BRs" id="mTw-HN-PfX"/>
+                <outlet property="movieImageView" destination="UbW-su-Qk2" id="lqp-Y8-Zsa"/>
+                <outlet property="movieNameLabel" destination="IXW-HU-Nwt" id="e7J-hR-LMc"/>
+                <outlet property="ratingLabel" destination="aog-JW-J8L" id="ZJN-hQ-3Ef"/>
+                <outlet property="releaseLabel" destination="wfq-Ri-wSR" id="V9U-G1-4MX"/>
+            </connections>
+            <point key="canvasLocation" x="39.200000000000003" y="63.418290854572717"/>
+        </tableViewCell>
+    </objects>
+    <resources>
+        <image name="img_placeholder" width="100" height="140"/>
+    </resources>
+</document>

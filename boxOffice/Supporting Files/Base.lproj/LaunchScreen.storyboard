@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" launchScreen="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="01J-lp-oVM">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--View Controller-->
+        <scene sceneID="EHf-IW-A2E">
+            <objects>
+                <viewController id="01J-lp-oVM" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Ze5-6b-2t3">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Connect_logo_w" translatesAutoresizingMaskIntoConstraints="NO" id="70P-OC-KEQ">
+                                <rect key="frame" x="118" y="603" width="139" height="20"/>
+                            </imageView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="img_splash" translatesAutoresizingMaskIntoConstraints="NO" id="J6c-Yd-OhL">
+                                <rect key="frame" x="118.5" y="264.5" width="138" height="138"/>
+                            </imageView>
+                        </subviews>
+                        <color key="backgroundColor" red="0.42091947793960571" green="0.50029522180557251" blue="0.79611355066299438" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                        <constraints>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="70P-OC-KEQ" secondAttribute="bottom" constant="44" id="DKG-hW-pAl"/>
+                            <constraint firstItem="J6c-Yd-OhL" firstAttribute="centerY" secondItem="Ze5-6b-2t3" secondAttribute="centerY" id="ays-la-CJp"/>
+                            <constraint firstItem="J6c-Yd-OhL" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="eQx-eO-6Ij"/>
+                            <constraint firstItem="70P-OC-KEQ" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="xc6-ge-GEh"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="iYj-Kq-Ea1" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="52" y="374.66266866566718"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="Connect_logo_w" width="139" height="20"/>
+        <image name="img_splash" width="138" height="138"/>
+    </resources>
+</document>
