@@ -39,10 +39,10 @@ class TableViewController: UITableViewController {
         indicator.startAnimating()
         UIApplication.shared.isNetworkActivityIndicatorVisible = true
         
-        requestData(urlString: "http://connect-boxoffice.run.goorm.io/movies?order_type=0") { (data: MovieList?, err: Error?) in
+        requestData(urlString: "http://connect-boxoffice.run.goorm.io/movies?order_type=0") { [weak self] (data: MovieList?, err: Error?) in
             if let error = err {
                 DispatchQueue.main.async {
-                    self.showErrorAlert(error: error.localizedDescription)
+                    self?.showErrorAlert(error: error.localizedDescription)
                 }
                 print(error.localizedDescription)
                 return
@@ -50,16 +50,16 @@ class TableViewController: UITableViewController {
             
             guard let data = data else {
                 DispatchQueue.main.async {
-                    self.showErrorAlert(error: "")
+                    self?.showErrorAlert(error: "")
                 }
                 return
             }
             
-            self.movieList = data
+            self?.movieList = data
             
             DispatchQueue.main.async {
-                self.tableView.reloadData()
-                self.indicator.stopAnimating()
+                self?.tableView.reloadData()
+                self?.indicator.stopAnimating()
                 UIApplication.shared.isNetworkActivityIndicatorVisible = false
             }
         }
@@ -91,10 +91,10 @@ class TableViewController: UITableViewController {
             return
         }
         
-        requestData(urlString: "http://connect-boxoffice.run.goorm.io/movies?order_type=\(type)") { (data: MovieList?, err: Error?) in
+        requestData(urlString: "http://connect-boxoffice.run.goorm.io/movies?order_type=\(type)") { [weak self] (data: MovieList?, err: Error?) in
             if let error = err {
                 DispatchQueue.main.async {
-                    self.showErrorAlert(error: error.localizedDescription)
+                    self?.showErrorAlert(error: error.localizedDescription)
                 }
                 print(error.localizedDescription)
                 return
@@ -102,15 +102,15 @@ class TableViewController: UITableViewController {
             
             guard let data = data else {
                 DispatchQueue.main.async {
-                    self.showErrorAlert(error: "")
+                    self?.showErrorAlert(error: "")
                 }
                 return
             }
             
-            self.movieList = data
+            self?.movieList = data
             
             DispatchQueue.main.async {
-                self.tableView.reloadData()
+                self?.tableView.reloadData()
                 sender.endRefreshing()
                 UIApplication.shared.isNetworkActivityIndicatorVisible = false
             }
@@ -150,10 +150,10 @@ extension TableViewController: MovieSortingDelegate {
         indicator.startAnimating()
         UIApplication.shared.isNetworkActivityIndicatorVisible = true
         
-        requestData(urlString: "http://connect-boxoffice.run.goorm.io/movies?order_type=\(type)") { (data: MovieList?, err: Error?) in
+        requestData(urlString: "http://connect-boxoffice.run.goorm.io/movies?order_type=\(type)") { [weak self] (data: MovieList?, err: Error?) in
             if let error = err {
                 DispatchQueue.main.async {
-                    self.showErrorAlert(error: error.localizedDescription)
+                    self?.showErrorAlert(error: error.localizedDescription)
                 }
                 print(error.localizedDescription)
                 return
@@ -161,16 +161,16 @@ extension TableViewController: MovieSortingDelegate {
             
             guard let data = data else {
                 DispatchQueue.main.async {
-                    self.showErrorAlert(error: "")
+                    self?.showErrorAlert(error: "")
                 }
                 return
             }
             
-            self.movieList = data
+            self?.movieList = data
             
             DispatchQueue.main.async {
-                self.tableView.reloadData()
-                self.indicator.stopAnimating()
+                self?.tableView.reloadData()
+                self?.indicator.stopAnimating()
                 UIApplication.shared.isNetworkActivityIndicatorVisible = false
             }
         }

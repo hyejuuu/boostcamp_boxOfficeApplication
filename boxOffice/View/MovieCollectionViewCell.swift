@@ -19,32 +19,35 @@ class MovieCollectionViewCell: UICollectionViewCell {
     
     var movie: Movie? {
         didSet {
-            guard let movie = movie, let url = URL(string: movie.thumb) else {
-                return
-            }
-            
-            if let image = cache.object(forKey: url.absoluteString as NSString) {
-                movieImageView.image = image
-            } else {
-                getImage(url: url, completion: { (image, error) in
-                    if let error = error {
-                        print(error.localizedDescription)
-                        return
-                    }
-                    
-                    DispatchQueue.main.async {
-                        self.movieImageView.image = cache.object(forKey: url.absoluteString as NSString)
-                    }
-                })
-            }
-            
-            
-            movieNameLabel.text = movie.title
-            ratingLabel.text = "\(movie.reservationGrade)위(\(movie.userRating)) / \(movie.reservationRate)%"
-            releaseLabel.text = "\(movie.date)"
-            
-            gradeImageView.image = movie.getGradeImage()
+            didSetMovie()
         }
     }
     
+    func didSetMovie() {
+        guard let movie = movie, let url = URL(string: movie.thumb) else {
+            return
+        }
+        
+        if let image = cache.object(forKey: url.absoluteString as NSString) {
+            movieImageView.image = image
+        } else {
+            getImage(url: url, completion: { [weak self] (image, error) in
+                if let error = error {
+                    print(error.localizedDescription)
+                    return
+                }
+                
+                DispatchQueue.main.async {
+                    self?.movieImageView.image = cache.object(forKey: url.absoluteString as NSString)
+                }
+            })
+        }
+        
+        
+        movieNameLabel.text = movie.title
+        ratingLabel.text = "\(movie.reservationGrade)위(\(movie.userRating)) / \(movie.reservationRate)%"
+        releaseLabel.text = "\(movie.date)"
+        
+        gradeImageView.image = movie.getGradeImage()
+    }
 }

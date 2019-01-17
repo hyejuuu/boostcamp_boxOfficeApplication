@@ -12,6 +12,7 @@ class TabBarController: UITabBarController {
     weak var movieTableViewDelegate: MovieSortingDelegate?
     weak var movieCollectionViewDelegate: MovieSortingDelegate?
 
+    // 누르면 touchUpSortButton을 호출하는 정렬 버튼
     lazy var sortButton = UIBarButtonItem(image: #imageLiteral(resourceName: "ic_settings"), style: .plain, target: self, action: #selector(touchUpSortButton(_:)))
     
     override func viewDidLoad() {
@@ -53,22 +54,22 @@ class TabBarController: UITabBarController {
     @objc func touchUpSortButton(_ sender: UIBarButtonItem) {
         let alertController = UIAlertController(title: "정렬방식 선택", message: "영화를 어떤 순서로 정렬할까요?", preferredStyle: .actionSheet)
         
-        let ticketingAction = UIAlertAction(title: "예매율", style: .default, handler: { (action: UIAlertAction) in
-            self.navigationItem.title = "예매율순"
-            self.movieTableViewDelegate?.didChangeMovieData(type: 0)
-            self.movieCollectionViewDelegate?.didChangeMovieData(type: 0)
+        let ticketingAction = UIAlertAction(title: "예매율", style: .default, handler: { [weak self] (action: UIAlertAction) in
+            self?.navigationItem.title = "예매율순"
+            self?.movieTableViewDelegate?.didChangeMovieData(type: 0)
+            self?.movieCollectionViewDelegate?.didChangeMovieData(type: 0)
         })
         
-        let curationAction = UIAlertAction(title: "큐레이션", style: .default, handler: { (action: UIAlertAction) in
-            self.navigationItem.title = "큐레이션"
-            self.movieTableViewDelegate?.didChangeMovieData(type: 1)
-            self.movieCollectionViewDelegate?.didChangeMovieData(type: 1)
+        let curationAction = UIAlertAction(title: "큐레이션", style: .default, handler: { [weak self] (action: UIAlertAction) in
+            self?.navigationItem.title = "큐레이션"
+            self?.movieTableViewDelegate?.didChangeMovieData(type: 1)
+            self?.movieCollectionViewDelegate?.didChangeMovieData(type: 1)
         })
         
-        let releaseAction = UIAlertAction(title: "개봉일", style: .default, handler: { (action: UIAlertAction) in
-            self.navigationItem.title = "개봉일"
-            self.movieTableViewDelegate?.didChangeMovieData(type: 2)
-            self.movieCollectionViewDelegate?.didChangeMovieData(type: 2)
+        let releaseAction = UIAlertAction(title: "개봉일", style: .default, handler: {[weak self] (action: UIAlertAction) in
+            self?.navigationItem.title = "개봉일"
+            self?.movieTableViewDelegate?.didChangeMovieData(type: 2)
+            self?.movieCollectionViewDelegate?.didChangeMovieData(type: 2)
         })
         
         let cancelAction = UIAlertAction(title: "취소", style: .cancel, handler: nil)

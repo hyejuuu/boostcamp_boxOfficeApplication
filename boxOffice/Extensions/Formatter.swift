@@ -8,6 +8,7 @@
 
 import Foundation
 
+// 누적관객수를 숫자 3개씩 나눠주기 위해서 사용한다.
 extension Formatter {
     static let withSeparator: NumberFormatter = {
         let formatter = NumberFormatter()

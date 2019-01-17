@@ -26,36 +26,7 @@ class MovieInfoView: UIView {
     
     var movie: MovieData? {
         didSet {
-            guard let movie = self.movie, let url = URL(string: movie.image) else {
-                return
-            }
-            
-            if let image = cache.object(forKey: url.absoluteString as NSString) {
-                DispatchQueue.main.async {
-                    self.movieImageView.image = image
-                }
-            } else {
-                getImage(url: url) { (image, error) in
-                    if let error = error {
-                        print(error.localizedDescription)
-                    }
-                    
-                    DispatchQueue.main.async {
-                        self.movieImageView.image = cache.object(forKey: url.absoluteString as NSString)
-                    }
-                }
-            }
-            
-            DispatchQueue.main.async {
-                self.setStarRatingView()
-                self.movieTitleLabel.text = movie.title
-                self.movieGenreLabel.text = "\(movie.genre)/\(movie.duration)분"
-                self.movieReleaseLabel.text = "\(movie.date) 개봉"
-                self.movieRatingLabel.text = "\(movie.reservationGrade)위 \(movie.reservationRate)%"
-                self.movieUserRatingLabel.text = "\(movie.userRating)"
-                self.movieAudienceLabel.text = "\(movie.audience.formattedWithSeparator)"
-                self.movieGradeImageView.image = movie.getGradeImage()
-            }
+            didSetMovie()
         }
     }
     
@@ -73,6 +44,39 @@ class MovieInfoView: UIView {
         let view = Bundle.main.loadNibNamed(xibName, owner: self, options: nil)?.first as! UIView
         view.frame = self.bounds
         self.addSubview(view)
+    }
+    
+    func didSetMovie() {
+        guard let movie = self.movie, let url = URL(string: movie.image) else {
+            return
+        }
+        
+        if let image = cache.object(forKey: url.absoluteString as NSString) {
+            DispatchQueue.main.async {
+                self.movieImageView.image = image
+            }
+        } else {
+            getImage(url: url) { [weak self] (image, error) in
+                if let error = error {
+                    print(error.localizedDescription)
+                }
+                
+                DispatchQueue.main.async {
+                    self?.movieImageView.image = cache.object(forKey: url.absoluteString as NSString)
+                }
+            }
+        }
+        
+        DispatchQueue.main.async {
+            self.setStarRatingView()
+            self.movieTitleLabel.text = movie.title
+            self.movieGenreLabel.text = "\(movie.genre)/\(movie.duration)분"
+            self.movieReleaseLabel.text = "\(movie.date) 개봉"
+            self.movieRatingLabel.text = "\(movie.reservationGrade)위 \(movie.reservationRate)%"
+            self.movieUserRatingLabel.text = "\(movie.userRating)"
+            self.movieAudienceLabel.text = "\(movie.audience.formattedWithSeparator)"
+            self.movieGradeImageView.image = movie.getGradeImage()
+        }
     }
     
     func setStarRatingView() {

@@ -32,6 +32,7 @@ class MovieContentsTableViewController: UITableViewController {
     
     let headerView = MovieInfoView()
     
+    // 화면이 보이기전
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         indicator.startAnimating()
@@ -41,10 +42,10 @@ class MovieContentsTableViewController: UITableViewController {
             return
         }
         
-        requestData(urlString: "http://connect-boxoffice.run.goorm.io/movie?id=\(id)") { (data: MovieData?, error: Error?) in
+        requestData(urlString: "http://connect-boxoffice.run.goorm.io/movie?id=\(id)") { [weak self] (data: MovieData?, error: Error?) in
             if let error = error {
                 DispatchQueue.main.async {
-                    self.showErrorAlert(error: error.localizedDescription)
+                    self?.showErrorAlert(error: error.localizedDescription)
                 }
                 print(error.localizedDescription)
                 return
@@ -52,23 +53,23 @@ class MovieContentsTableViewController: UITableViewController {
             
             guard let data = data else {
                 DispatchQueue.main.async {
-                    self.showErrorAlert(error: "")
+                    self?.showErrorAlert(error: "")
                 }
                 return
             }
             
-            self.movie = data
-            self.headerView.movie = data
+            self?.movie = data
+            self?.headerView.movie = data
             
             DispatchQueue.main.async {
-                self.tableView.reloadData()
+                self?.tableView.reloadData()
             }
         }
         
-        requestData(urlString: "http://connect-boxoffice.run.goorm.io/comments?movie_id=\(id)") { (data: CommentList?, error: Error?) in
+        requestData(urlString: "http://connect-boxoffice.run.goorm.io/comments?movie_id=\(id)") { [weak self] (data: CommentList?, error: Error?) in
             if let error = error {
                 DispatchQueue.main.async {
-                    self.showErrorAlert(error: error.localizedDescription)
+                    self?.showErrorAlert(error: error.localizedDescription)
                 }
                 print(error.localizedDescription)
                 return
@@ -76,16 +77,16 @@ class MovieContentsTableViewController: UITableViewController {
             
             guard let data = data else {
                 DispatchQueue.main.async {
-                    self.showErrorAlert(error: "")
+                    self?.showErrorAlert(error: "")
                 }
                 return
             }
             
-            self.commentList = data
+            self?.commentList = data
             
             DispatchQueue.main.async {
-                self.tableView.reloadData()
-                self.indicator.stopAnimating()
+                self?.tableView.reloadData()
+                self?.indicator.stopAnimating()
                 UIApplication.shared.isNetworkActivityIndicatorVisible = false
             }
         }

@@ -8,6 +8,7 @@
 
 import UIKit
 
+// 사용하기 위한 캐시
 let cache: NSCache = NSCache<NSString, UIImage>()
 
 // urlString에 해당하는 데이터를 가져오기 위한 메소드

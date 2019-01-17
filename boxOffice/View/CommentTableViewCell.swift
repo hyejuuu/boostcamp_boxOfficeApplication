@@ -20,20 +20,24 @@ class CommentTableViewCell: UITableViewCell {
     
     var comment: Comment? {
         didSet {
-            guard let comment = comment else {
-                return
-            }
-
-            let date: Date = Date(timeIntervalSince1970: comment.timestamp)
-            let dateFormatter = DateFormatter()
-            dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
-
-            setStarRatingView()
-            
-            writerLabel.text = comment.writer
-            timestampLabel.text = dateFormatter.string(from: date)
-            commentContentsLabel.text = comment.contents
+            didSetComment()
         }
+    }
+    
+    func didSetComment() {
+        guard let comment = comment else {
+            return
+        }
+        
+        let date: Date = Date(timeIntervalSince1970: comment.timestamp)
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
+        
+        setStarRatingView()
+        
+        writerLabel.text = comment.writer
+        timestampLabel.text = dateFormatter.string(from: date)
+        commentContentsLabel.text = comment.contents
     }
     
     func setStarRatingView() {

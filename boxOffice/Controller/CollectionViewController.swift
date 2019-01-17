@@ -40,10 +40,10 @@ class CollectionViewController: UICollectionViewController {
         indicator.startAnimating()
         UIApplication.shared.isNetworkActivityIndicatorVisible = true
         
-        requestData(urlString: "http://connect-boxoffice.run.goorm.io/movies?order_type=0") { (data: MovieList?, err: Error?) in
+        requestData(urlString: "http://connect-boxoffice.run.goorm.io/movies?order_type=0") { [weak self] (data: MovieList?, err: Error?) in
             if let error = err {
                 DispatchQueue.main.async {
-                    self.showErrorAlert(error: error.localizedDescription)
+                    self?.showErrorAlert(error: error.localizedDescription)
                 }
                 print(error.localizedDescription)
                 return
@@ -51,16 +51,16 @@ class CollectionViewController: UICollectionViewController {
             
             guard let data = data else {
                 DispatchQueue.main.async {
-                    self.showErrorAlert(error: "")
+                    self?.showErrorAlert(error: "")
                 }
                 return
             }
             
-            self.movieList = data
+            self?.movieList = data
             
             DispatchQueue.main.async {
-                self.collectionView.reloadData()
-                self.indicator.stopAnimating()
+                self?.collectionView.reloadData()
+                self?.indicator.stopAnimating()
                 UIApplication.shared.isNetworkActivityIndicatorVisible = false
             }
         }
@@ -91,10 +91,10 @@ class CollectionViewController: UICollectionViewController {
             return
         }
         
-        requestData(urlString: "http://connect-boxoffice.run.goorm.io/movies?order_type=\(type)") { (data: MovieList?, err: Error?) in
+        requestData(urlString: "http://connect-boxoffice.run.goorm.io/movies?order_type=\(type)") { [weak self] (data: MovieList?, err: Error?) in
             if let error = err {
                 DispatchQueue.main.async {
-                    self.showErrorAlert(error: error.localizedDescription)
+                    self?.showErrorAlert(error: error.localizedDescription)
                 }
                 print(error.localizedDescription)
                 return
@@ -102,15 +102,15 @@ class CollectionViewController: UICollectionViewController {
             
             guard let data = data else {
                 DispatchQueue.main.async {
-                    self.showErrorAlert(error: "")
+                    self?.showErrorAlert(error: "")
                 }
                 return
             }
             
-            self.movieList = data
+            self?.movieList = data
             
             DispatchQueue.main.async {
-                self.collectionView.reloadData()
+                self?.collectionView.reloadData()
                 sender.endRefreshing()
                 UIApplication.shared.isNetworkActivityIndicatorVisible = false
             }
@@ -148,10 +148,10 @@ extension CollectionViewController: MovieSortingDelegate {
         indicator.startAnimating()
         UIApplication.shared.isNetworkActivityIndicatorVisible = true
         
-        requestData(urlString: "http://connect-boxoffice.run.goorm.io/movies?order_type=\(type)") { (data: MovieList?, err: Error?) in
+        requestData(urlString: "http://connect-boxoffice.run.goorm.io/movies?order_type=\(type)") { [weak self] (data: MovieList?, err: Error?) in
             if let error = err {
                 DispatchQueue.main.async {
-                    self.showErrorAlert(error: error.localizedDescription)
+                    self?.showErrorAlert(error: error.localizedDescription)
                 }
                 print(error.localizedDescription)
                 return
@@ -159,16 +159,16 @@ extension CollectionViewController: MovieSortingDelegate {
             
             guard let data = data else {
                 DispatchQueue.main.async {
-                    self.showErrorAlert(error: "")
+                    self?.showErrorAlert(error: "")
                 }
                 return
             }
             
-            self.movieList = data
+            self?.movieList = data
             
             DispatchQueue.main.async {
-                self.collectionView.reloadData()
-                self.indicator.stopAnimating()
+                self?.collectionView.reloadData()
+                self?.indicator.stopAnimating()
                 UIApplication.shared.isNetworkActivityIndicatorVisible = false
             }
         }
