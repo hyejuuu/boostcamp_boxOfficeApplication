@@ -19,7 +19,7 @@ struct MovieList: Codable {
     }
 }
 
-struct Movie: Codable, GradeHaving {
+struct Movie: Codable, Graded {
     let grade: Grade
     let thumb: String
     let reservationGrade: Int

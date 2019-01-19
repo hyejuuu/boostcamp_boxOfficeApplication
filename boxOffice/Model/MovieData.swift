@@ -9,7 +9,7 @@
 // 영화의 데이터
 import UIKit
 
-struct MovieData: Codable, GradeHaving {
+struct MovieData: Codable, Graded {
     let grade: Grade
     let audience: Int
     let actor: String

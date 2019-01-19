@@ -1,5 +1,5 @@
 //
-//  GradeHaving.swift
+//  Grade.swift
 //  boxOffice
 //
 //  Created by 장공의 on 20/01/2019.
@@ -16,11 +16,11 @@ enum Grade: Int, Codable {
     case adult = 19
 }
 
-protocol GradeHaving {
+protocol Graded {
     var grade: Grade { get }
 }
 
-extension GradeHaving {
+extension Graded {
     func getGradeImage() -> UIImage {
         switch grade {
         case .all:
