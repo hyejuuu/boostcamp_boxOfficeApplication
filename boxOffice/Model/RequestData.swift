@@ -11,6 +11,10 @@ import UIKit
 // 사용하기 위한 캐시
 let cache: NSCache = NSCache<NSString, UIImage>()
 
+func url(_ path: String) -> String {
+    return "http://connect-boxoffice.run.goorm.io/" + path
+}
+
 // urlString에 해당하는 데이터를 가져오기 위한 메소드
 func requestData<T: Decodable>(urlString: String, completion: @escaping (T?,Error?) -> ()) {
     guard let url: URL = URL(string: urlString) else {

@@ -9,7 +9,7 @@
 import UIKit
 
 class CollectionViewController: UICollectionViewController {
-
+    
     fileprivate let cellId = "celId"
     var movieList: MovieList?
     
@@ -40,7 +40,9 @@ class CollectionViewController: UICollectionViewController {
         indicator.startAnimating()
         UIApplication.shared.isNetworkActivityIndicatorVisible = true
         
-        requestData(urlString: "http://connect-boxoffice.run.goorm.io/movies?order_type=0") { [weak self] (data: MovieList?, err: Error?) in
+        
+        let urlString = url("movies?order_type=0")
+        requestData(urlString: urlString) { [weak self] (data: MovieList?, err: Error?) in
             if let error = err {
                 DispatchQueue.main.async {
                     self?.showErrorAlert(error: error.localizedDescription)
@@ -91,7 +93,8 @@ class CollectionViewController: UICollectionViewController {
             return
         }
         
-        requestData(urlString: "http://connect-boxoffice.run.goorm.io/movies?order_type=\(type)") { [weak self] (data: MovieList?, err: Error?) in
+        let urlString = url("movies?order_type=\(type)")
+        requestData(urlString: urlString) { [weak self] (data: MovieList?, err: Error?) in
             if let error = err {
                 DispatchQueue.main.async {
                     self?.showErrorAlert(error: error.localizedDescription)
@@ -118,16 +121,16 @@ class CollectionViewController: UICollectionViewController {
     }
     
     //MARK:- DataSource
-
+    
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return movieList?.movies.count ?? 0
     }
-
+    
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellId, for: indexPath) as? MovieCollectionViewCell else {
             return UICollectionViewCell()
         }
-
+        
         cell.movie = self.movieList?.movies[indexPath.item]
         return cell
     }
@@ -148,7 +151,8 @@ extension CollectionViewController: MovieSortingDelegate {
         indicator.startAnimating()
         UIApplication.shared.isNetworkActivityIndicatorVisible = true
         
-        requestData(urlString: "http://connect-boxoffice.run.goorm.io/movies?order_type=\(type)") { [weak self] (data: MovieList?, err: Error?) in
+        let urlString = url("movies?order_type=\(type)")
+        requestData(urlString: urlString) { [weak self] (data: MovieList?, err: Error?) in
             if let error = err {
                 DispatchQueue.main.async {
                     self?.showErrorAlert(error: error.localizedDescription)
