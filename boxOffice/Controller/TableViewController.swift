@@ -39,7 +39,8 @@ class TableViewController: UITableViewController {
         indicator.startAnimating()
         UIApplication.shared.isNetworkActivityIndicatorVisible = true
         
-        requestData(urlString: "http://connect-boxoffice.run.goorm.io/movies?order_type=0") { [weak self] (data: MovieList?, err: Error?) in
+        let urlString = url("movies?order_type=0")
+        requestData(urlString: urlString) { [weak self] (data: MovieList?, err: Error?) in
             if let error = err {
                 DispatchQueue.main.async {
                     self?.showErrorAlert(error: error.localizedDescription)
@@ -62,6 +63,7 @@ class TableViewController: UITableViewController {
                 self?.indicator.stopAnimating()
                 UIApplication.shared.isNetworkActivityIndicatorVisible = false
             }
+            
         }
     }
     
@@ -91,7 +93,8 @@ class TableViewController: UITableViewController {
             return
         }
         
-        requestData(urlString: "http://connect-boxoffice.run.goorm.io/movies?order_type=\(type)") { [weak self] (data: MovieList?, err: Error?) in
+        let urlString = url("movies?order_type=\(type)")
+        requestData(urlString: urlString) { [weak self] (data: MovieList?, err: Error?) in
             if let error = err {
                 DispatchQueue.main.async {
                     self?.showErrorAlert(error: error.localizedDescription)
@@ -116,7 +119,7 @@ class TableViewController: UITableViewController {
             }
         }
     }
-
+    
     //MARK:- DataSource
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -150,7 +153,8 @@ extension TableViewController: MovieSortingDelegate {
         indicator.startAnimating()
         UIApplication.shared.isNetworkActivityIndicatorVisible = true
         
-        requestData(urlString: "http://connect-boxoffice.run.goorm.io/movies?order_type=\(type)") { [weak self] (data: MovieList?, err: Error?) in
+        let urlString = url("movies?order_type=\(type)")
+        requestData(urlString: urlString) { [weak self] (data: MovieList?, err: Error?) in
             if let error = err {
                 DispatchQueue.main.async {
                     self?.showErrorAlert(error: error.localizedDescription)

@@ -42,7 +42,8 @@ class MovieContentsTableViewController: UITableViewController {
             return
         }
         
-        requestData(urlString: "http://connect-boxoffice.run.goorm.io/movie?id=\(id)") { [weak self] (data: MovieData?, error: Error?) in
+        let urlString = url("movie?id=\(id)")
+        requestData(urlString: urlString) { [weak self] (data: MovieData?, error: Error?) in
             if let error = error {
                 DispatchQueue.main.async {
                     self?.showErrorAlert(error: error.localizedDescription)
@@ -66,7 +67,8 @@ class MovieContentsTableViewController: UITableViewController {
             }
         }
         
-        requestData(urlString: "http://connect-boxoffice.run.goorm.io/comments?movie_id=\(id)") { [weak self] (data: CommentList?, error: Error?) in
+        let urlString = url("comments?movie_id=\(id)")
+        requestData(urlString: urlString) { [weak self] (data: CommentList?, error: Error?) in
             if let error = error {
                 DispatchQueue.main.async {
                     self?.showErrorAlert(error: error.localizedDescription)
@@ -98,7 +100,7 @@ class MovieContentsTableViewController: UITableViewController {
         setLayout()
         setTableView()
     }
-
+    
     func setLayout() {
         navigationItem.title = movieName
         self.tableView.backgroundColor = #colorLiteral(red: 0.921431005, green: 0.9214526415, blue: 0.9214410186, alpha: 1)
