@@ -9,14 +9,14 @@
 // 영화의 데이터
 import UIKit
 
-struct MovieData: Codable {
+struct MovieData: Codable, Graded {
+    let grade: Grade
     let audience: Int
     let actor: String
     let duration: Int
     let director: String
     let synopsis: String
     let genre: String
-    let grade: Int
     let image: String
     let reservationGrade: Int
     let title: String
@@ -30,20 +30,5 @@ struct MovieData: Codable {
         case reservationGrade = "reservation_grade"
         case reservationRate = "reservation_rate"
         case userRating = "user_rating"
-    }
-
-    func getGradeImage() -> UIImage {
-        switch grade {
-        case 0:
-            return #imageLiteral(resourceName: "ic_allages")
-        case 12:
-            return #imageLiteral(resourceName: "ic_12")
-        case 15:
-            return #imageLiteral(resourceName: "ic_15")
-        case 19:
-            return #imageLiteral(resourceName: "ic_19")
-        default:
-            return UIImage()
-        }
     }
 }

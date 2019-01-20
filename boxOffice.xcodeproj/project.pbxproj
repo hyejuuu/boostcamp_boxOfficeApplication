@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		991E8CD121F37C7900D47A9F /* GradeHaving.swift in Sources */ = {isa = PBXBuildFile; fileRef = 991E8CD021F37C7900D47A9F /* GradeHaving.swift */; };
 		D127FC4521B93FB800BDEA42 /* MovieTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D127FC4321B93FB800BDEA42 /* MovieTableViewCell.swift */; };
 		D127FC4621B93FB800BDEA42 /* MovieTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D127FC4421B93FB800BDEA42 /* MovieTableViewCell.xib */; };
 		D141FB7621BCEAFC00D838AB /* CollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D141FB7521BCEAFC00D838AB /* CollectionViewController.swift */; };
@@ -35,6 +36,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		991E8CD021F37C7900D47A9F /* GradeHaving.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GradeHaving.swift; sourceTree = "<group>"; };
 		D127FC4321B93FB800BDEA42 /* MovieTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieTableViewCell.swift; sourceTree = "<group>"; };
 		D127FC4421B93FB800BDEA42 /* MovieTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MovieTableViewCell.xib; sourceTree = "<group>"; };
 		D141FB7521BCEAFC00D838AB /* CollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionViewController.swift; sourceTree = "<group>"; };
@@ -143,6 +145,7 @@
 				D1D6DE4821B82F7900DBD47F /* MovieData.swift */,
 				D1D6DE4A21B830D000DBD47F /* CommentList.swift */,
 				D19C783721BA8BBE00214604 /* MovieSortingDelegate.swift */,
+				991E8CD021F37C7900D47A9F /* GradeHaving.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -238,6 +241,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				991E8CD121F37C7900D47A9F /* GradeHaving.swift in Sources */,
 				D141FB7621BCEAFC00D838AB /* CollectionViewController.swift in Sources */,
 				D1ED310221BEB1C5000E5806 /* Formatter.swift in Sources */,
 				D1D6DE4721B82F5600DBD47F /* MovieList.swift in Sources */,

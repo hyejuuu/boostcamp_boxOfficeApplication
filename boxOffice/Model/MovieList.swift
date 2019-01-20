@@ -19,8 +19,8 @@ struct MovieList: Codable {
     }
 }
 
-struct Movie: Codable {
-    let grade: Int
+struct Movie: Codable, Graded {
+    let grade: Grade
     let thumb: String
     let reservationGrade: Int
     let title: String
@@ -34,20 +34,5 @@ struct Movie: Codable {
         case reservationGrade = "reservation_grade"
         case reservationRate = "reservation_rate"
         case userRating = "user_rating"
-    }
-    
-    func getGradeImage() -> UIImage {
-        switch grade {
-        case 0:
-            return #imageLiteral(resourceName: "ic_allages")
-        case 12:
-            return #imageLiteral(resourceName: "ic_12")
-        case 15:
-            return #imageLiteral(resourceName: "ic_15")
-        case 19:
-            return #imageLiteral(resourceName: "ic_19")
-        default:
-            return UIImage()
-        }
     }
 }
